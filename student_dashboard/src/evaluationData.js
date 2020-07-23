@@ -3373,27 +3373,66 @@ const allAssignmentNames = ["SCRUM", "W1D1-1", "W1D2-1", "W1D2-2", "W1D2-3",
 
 
 
+//per student de evaluatiewaarde van iedere opdracht
+
+const getLeukEvaluationsByStudentName = function (studentname) {
+    const dataobjects = [];
+    const objectsFilteredByName = evaluationData.filter(object => object.naam == studentname);
+    objectsFilteredByName.forEach(item => {
+        const newObject = {
+            x: item.opdracht,
+            y: item.leuk
+        }
+        dataobjects.push(newObject)
+    })
+
+
+    console.log(dataobjects)
+
+};
+
+getLeukEvaluationsByStudentName("Evelyn")
+
+
+const getMoeilijkEvaluationsByStudentName = function (studentname) {
+    const dataobjects = [];
+    const objectsFilteredByName = evaluationData.filter(object => object.naam == studentname);
+    objectsFilteredByName.forEach(item => {
+        const newObject = {
+            x: item.opdracht,
+            y: item.moeilijk
+        }
+        dataobjects.push(newObject)
+    })
+
+
+    console.log(dataobjects)
+
+};
+
+getMoeilijkEvaluationsByStudentName("Floris")
+
 //voor iedere opdracht totaal van leuk en moeilijk vinden
 
-const getTotalMoeilijkofAssignment = function (assignmentName) {
-    const assignmentsFiltered = evaluationData.filter(item => item.opdracht === assignmentName);
+// const getTotalMoeilijkofAssignment = function (assignmentName) {
+//     const assignmentsFiltered = evaluationData.filter(item => item.opdracht === assignmentName);
 
-    console.log(assignmentName)
-
-
-    const totalMoeilijkValuesofAssignment = assignmentsFiltered.reduce(function (previousValue, currentValue) {
-        return {
-            moeilijk: previousValue.moeilijk + currentValue.moeilijk
-        }
-    });
-    console.log(totalMoeilijkValuesofAssignment)
-
-}
+//     console.log(assignmentName)
 
 
-allAssignmentNames.map(assignmentName => {
-    getTotalMoeilijkofAssignment(assignmentName)
-})
+//     const totalMoeilijkValuesofAssignment = assignmentsFiltered.reduce(function (previousValue, currentValue) {
+//         return {
+//             moeilijk: previousValue.moeilijk + currentValue.moeilijk
+//         }
+//     });
+//     console.log(totalMoeilijkValuesofAssignment)
+
+// }
+
+
+// allAssignmentNames.map(assignmentName => {
+//     getTotalMoeilijkofAssignment(assignmentName)
+// })
 
 
 export default evaluationData
