@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import dataLeukBar from "./dataLeukBar"
 import dataMoeilijkBar from "./dataMoelijkBar"
 import Home from "./Home"
+import Diagram from "./Diagram"
 
 class App extends React.Component {
   constructor() {
@@ -16,7 +17,45 @@ class App extends React.Component {
       leukEvaluaties: dataLeukBar,
       moeilijkEvaluaties: dataMoeilijkBar
     }
+    this.getEvaluationsByStudentName = this.getEvaluationsByStudentName.bind(this)
+    this.getAllEvaluations = this.getAllEvaluations.bind(this)
   }
+
+  getAllEvaluations() {
+    this.setState({
+      leukEvaluaties: dataLeukBar,
+      moeilijkEvaluaties: dataMoeilijkBar
+    })
+  }
+
+  getEvaluationsByStudentName(studentname) {
+    const moeilijkEvaluaties = [];
+    const leukEvaluaties = [];
+    const objectsFilteredByName = evaluationData.filter(object => object.naam == studentname);
+    objectsFilteredByName.forEach(item => {
+      const newMoeilijkEvaluation = {
+        x: item.opdracht,
+        y: item.moeilijk
+      }
+      moeilijkEvaluaties.push(newMoeilijkEvaluation)
+
+      const newLeukEvaluation = {
+        x: item.opdracht,
+        y: item.leuk
+      }
+      leukEvaluaties.push(newLeukEvaluation)
+
+    })
+    this.setState({
+      leukEvaluaties: leukEvaluaties,
+      moeilijkEvaluaties: moeilijkEvaluaties
+    })
+
+    //console.log(moeilijkEvaluaties)
+    //console.log(leukEvaluaties)
+  }
+
+
 
   render() {
     return (
@@ -26,37 +65,37 @@ class App extends React.Component {
           <nav>
             <ul>
               <li>
-                <Link to="/home">Home</Link>
+                <Link to="/home" onClick={() => this.getAllEvaluations()}>Home</Link>
               </li>
               <li>
-                <Link to="/Evelyn">evaluation of Evelyn</Link>
+                <Link to="/Evelyn" onClick={() => this.getEvaluationsByStudentName("Evelyn")}>evaluation of Evelyn</Link>
               </li>
               <li>
-                <Link to="/Aranka">evaluation of Aranka</Link>
+                <Link to="/Aranka" onClick={() => this.getEvaluationsByStudentName("Aranka")}>evaluation of Aranka</Link>
               </li>
               <li>
-                <Link to="/Floris">evaluation of Floris</Link>
+                <Link to="/Floris" onClick={() => this.getEvaluationsByStudentName("Floris")}>evaluation of Floris</Link>
               </li>
               <li>
-                <Link to="/Hector">evaluation of Hector</Link>
+                <Link to="/Hector" onClick={() => this.getEvaluationsByStudentName("Hector")}>evaluation of Hector</Link>
               </li>
               <li>
-                <Link to="/Martina">evaluation of Martina</Link>
+                <Link to="/Martina" onClick={() => this.getEvaluationsByStudentName("Martina")}>evaluation of Martina</Link>
               </li>
               <li>
-                <Link to="/Maurits">evaluation of Maurits</Link>
+                <Link to="/Maurits" onClick={() => this.getEvaluationsByStudentName("Maurits")}>evaluation of Maurits</Link>
               </li>
               <li>
-                <Link to="/Rahima">evaluation of Rahima</Link>
+                <Link to="/Rahima" onClick={() => this.getEvaluationsByStudentName("Rahima")}>evaluation of Rahima</Link>
               </li>
               <li>
-                <Link to="/Sandra">evaluation of Sandra</Link>
+                <Link to="/Sandra" onClick={() => this.getEvaluationsByStudentName("Sandra")}>evaluation of Sandra</Link>
               </li>
               <li>
-                <Link to="/Wietske">evaluation of Wietske</Link>
+                <Link to="/Wietske" onClick={() => this.getEvaluationsByStudentName("Wietske")}>evaluation of Wietske</Link>
               </li>
               <li>
-                <Link to="/Storm">evaluation of Storm</Link>
+                <Link to="/Storm" onClick={() => this.getEvaluationsByStudentName("Storm")}>evaluation of Storm</Link>
               </li>
 
             </ul>
@@ -67,37 +106,36 @@ class App extends React.Component {
                 <Home moeilijkdata={this.state.moeilijkEvaluaties} leukdata={this.state.leukEvaluaties} />
               </Route>
               <Route path="/Evelyn">
-                <h2>evelyn</h2>
+                <Diagram moeilijkdata={this.state.moeilijkEvaluaties} leukdata={this.state.leukEvaluaties} />
+
               </Route>
               <Route path="/Aranka">
-                <h2>aranka</h2>
+                <Diagram moeilijkdata={this.state.moeilijkEvaluaties} leukdata={this.state.leukEvaluaties} />
               </Route>
               <Route path="/Floris">
-                <h2>floris</h2>
+                <Diagram moeilijkdata={this.state.moeilijkEvaluaties} leukdata={this.state.leukEvaluaties} />
               </Route>
               <Route path="/Hector">
-                <h2>hector</h2>
+                <Diagram moeilijkdata={this.state.moeilijkEvaluaties} leukdata={this.state.leukEvaluaties} />
               </Route>
               <Route path="/Martina">
-                <h2>martina</h2>
+                <Diagram moeilijkdata={this.state.moeilijkEvaluaties} leukdata={this.state.leukEvaluaties} />
               </Route>
               <Route path="/Maurits">
-                <h2>maurits</h2>
+                <Diagram moeilijkdata={this.state.moeilijkEvaluaties} leukdata={this.state.leukEvaluaties} />
               </Route>
               <Route path="/Rahima">
-                <h2>rahima</h2>
+                <Diagram moeilijkdata={this.state.moeilijkEvaluaties} leukdata={this.state.leukEvaluaties} />
               </Route>
               <Route path="/Sandra">
-                <h2>sandra</h2>
+                <Diagram moeilijkdata={this.state.moeilijkEvaluaties} leukdata={this.state.leukEvaluaties} />
               </Route>
               <Route path="/Wietske">
-                <h2>wietske</h2>
+                <Diagram moeilijkdata={this.state.moeilijkEvaluaties} leukdata={this.state.leukEvaluaties} />
               </Route>
               <Route path="/Storm">
-                <h2>storm</h2>
+                <Diagram moeilijkdata={this.state.moeilijkEvaluaties} leukdata={this.state.leukEvaluaties} />
               </Route>
-
-
             </Switch>
           </main>
         </div>

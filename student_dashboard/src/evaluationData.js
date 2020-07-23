@@ -3391,7 +3391,7 @@ const getLeukEvaluationsByStudentName = function (studentname) {
 
 };
 
-getLeukEvaluationsByStudentName("Evelyn")
+//getLeukEvaluationsByStudentName("Evelyn")
 
 
 const getMoeilijkEvaluationsByStudentName = function (studentname) {
@@ -3410,7 +3410,32 @@ const getMoeilijkEvaluationsByStudentName = function (studentname) {
 
 };
 
-getMoeilijkEvaluationsByStudentName("Floris")
+const getEvaluationsByStudentName = function (studentname) {
+    const moeilijkEvaluaties = [];
+    const leukEvaluaties = [];
+    const objectsFilteredByName = evaluationData.filter(object => object.naam == studentname);
+    objectsFilteredByName.forEach(item => {
+        const newMoeilijkEvaluation = {
+            x: item.opdracht,
+            y: item.moeilijk
+        }
+        moeilijkEvaluaties.push(newMoeilijkEvaluation)
+
+        const newLeukEvaluation = {
+            x: item.opdracht,
+            y: item.leuk
+        }
+        leukEvaluaties.push(newLeukEvaluation)
+
+    })
+
+
+    console.log(moeilijkEvaluaties)
+    console.log(leukEvaluaties)
+}
+
+getEvaluationsByStudentName("Floris")
+//getMoeilijkEvaluationsByStudentName("Floris")
 
 //voor iedere opdracht totaal van leuk en moeilijk vinden
 
