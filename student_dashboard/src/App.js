@@ -16,9 +16,10 @@ class App extends React.Component {
   constructor() {
     super()
     this.state = {
-      leukEvaluaties: dataLeukBar,
-      moeilijkEvaluaties: dataMoeilijkBar,
-      categories: allAssignmentNames
+      leukEvaluaties: "",
+      moeilijkEvaluaties: "",
+      categories: "",
+      title: ""
     }
     this.getEvaluationsByStudentName = this.getEvaluationsByStudentName.bind(this)
     this.getAllEvaluations = this.getAllEvaluations.bind(this)
@@ -29,18 +30,19 @@ class App extends React.Component {
     this.setState({
       leukEvaluaties: dataLeukBar,
       moeilijkEvaluaties: dataMoeilijkBar,
-      categories: allAssignmentNames
+      categories: allAssignmentNames,
+      title: "Average Evaluations"
     })
   }
 
-  // componentDidMount() {
-  //   this.getAllEvaluations()
-  // }
+  componentDidMount() {
+    this.getAllEvaluations()
+  }
 
   getEvaluationsByStudentName(studentname) {
     const moeilijkEvaluaties = [];
     const leukEvaluaties = [];
-    const objectsFilteredByName = evaluationData.filter(object => object.naam == studentname);
+    const objectsFilteredByName = evaluationData.filter(object => object.naam === studentname);
     objectsFilteredByName.forEach(item => {
       const newMoeilijkEvaluation = {
         x: item.opdracht,
@@ -58,7 +60,8 @@ class App extends React.Component {
     this.setState({
       leukEvaluaties: leukEvaluaties,
       moeilijkEvaluaties: moeilijkEvaluaties,
-      categories: allAssignmentNames
+      categories: allAssignmentNames,
+      title: studentname
     })
 
   }
@@ -66,7 +69,8 @@ class App extends React.Component {
   getStudentEvaluationsByAssignmentName(event) {
     const moeilijkEvaluaties = [];
     const leukEvaluaties = [];
-    const objectsFilteredByName = evaluationData.filter(object => object.opdracht === event.target.value);
+    const assignmentName = event.target.value;
+    const objectsFilteredByName = evaluationData.filter(object => object.opdracht === assignmentName);
     objectsFilteredByName.forEach(item => {
       const newMoeilijkEvaluation = {
         x: item.naam,
@@ -80,11 +84,13 @@ class App extends React.Component {
       }
       leukEvaluaties.push(newLeukEvaluation)
 
+
     })
     this.setState({
       leukEvaluaties: leukEvaluaties,
       moeilijkEvaluaties: moeilijkEvaluaties,
-      categories: allStudentNames
+      categories: allStudentNames,
+      title: assignmentName
     })
 
   }
@@ -92,11 +98,13 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
+        <h1>Winc Academy Student Dashboard</h1>
         <DropMenu getEvaluations={this.getStudentEvaluationsByAssignmentName} />
         <Router>
           <div>
             <nav>
+              <h2>Main Menu</h2>
               <ul className="navBar">
                 <li>
                   <Link to="/home" onClick={() => this.getAllEvaluations()}>Home</Link>
@@ -137,38 +145,38 @@ class App extends React.Component {
             <main>
               <Switch>
                 <Route path="/home">
-                  <Home title="Student Dashboard Winc Academy" categories={this.state.categories} moeilijkdata={this.state.moeilijkEvaluaties} leukdata={this.state.leukEvaluaties} />
+                  <Home title="Student Dashboard Winc Academy" title={this.state.title} categories={this.state.categories} moeilijkdata={this.state.moeilijkEvaluaties} leukdata={this.state.leukEvaluaties} />
                 </Route>
                 <Route path="/Evelyn">
-                  <Diagram title="evaluation Evelyn" categories={this.state.categories} moeilijkdata={this.state.moeilijkEvaluaties} leukdata={this.state.leukEvaluaties} />
+                  <Diagram title="evaluation Evelyn" title={this.state.title} categories={this.state.categories} moeilijkdata={this.state.moeilijkEvaluaties} leukdata={this.state.leukEvaluaties} />
 
                 </Route>
                 <Route path="/Aranka">
-                  <Diagram title="evaluation Aranka" categories={this.state.categories} moeilijkdata={this.state.moeilijkEvaluaties} leukdata={this.state.leukEvaluaties} />
+                  <Diagram title="evaluation Aranka" title={this.state.title} categories={this.state.categories} moeilijkdata={this.state.moeilijkEvaluaties} leukdata={this.state.leukEvaluaties} />
                 </Route>
                 <Route path="/Floris">
-                  <Diagram title="evaluation Floris" categories={this.state.categories} moeilijkdata={this.state.moeilijkEvaluaties} leukdata={this.state.leukEvaluaties} />
+                  <Diagram title="evaluation Floris" title={this.state.title} categories={this.state.categories} moeilijkdata={this.state.moeilijkEvaluaties} leukdata={this.state.leukEvaluaties} />
                 </Route>
                 <Route path="/Hector">
-                  <Diagram title="evaluation Hector" categories={this.state.categories} moeilijkdata={this.state.moeilijkEvaluaties} leukdata={this.state.leukEvaluaties} />
+                  <Diagram title="evaluation Hector" title={this.state.title} categories={this.state.categories} moeilijkdata={this.state.moeilijkEvaluaties} leukdata={this.state.leukEvaluaties} />
                 </Route>
                 <Route path="/Martina">
-                  <Diagram title="evaluation Martina" categories={this.state.categories} moeilijkdata={this.state.moeilijkEvaluaties} leukdata={this.state.leukEvaluaties} />
+                  <Diagram title="evaluation Martina" title={this.state.title} categories={this.state.categories} moeilijkdata={this.state.moeilijkEvaluaties} leukdata={this.state.leukEvaluaties} />
                 </Route>
                 <Route path="/Maurits">
-                  <Diagram title="evaluation Maurits" categories={this.state.categories} moeilijkdata={this.state.moeilijkEvaluaties} leukdata={this.state.leukEvaluaties} />
+                  <Diagram title="evaluation Maurits" title={this.state.title} categories={this.state.categories} moeilijkdata={this.state.moeilijkEvaluaties} leukdata={this.state.leukEvaluaties} />
                 </Route>
                 <Route path="/Rahima">
-                  <Diagram title="evaluation Rahima" categories={this.state.categories} moeilijkdata={this.state.moeilijkEvaluaties} leukdata={this.state.leukEvaluaties} />
+                  <Diagram title="evaluation Rahima" title={this.state.title} categories={this.state.categories} moeilijkdata={this.state.moeilijkEvaluaties} leukdata={this.state.leukEvaluaties} />
                 </Route>
                 <Route path="/Sandra">
-                  <Diagram title="evaluation Sandra" categories={this.state.categories} moeilijkdata={this.state.moeilijkEvaluaties} leukdata={this.state.leukEvaluaties} />
+                  <Diagram title="evaluation Sandra" title={this.state.title} categories={this.state.categories} moeilijkdata={this.state.moeilijkEvaluaties} leukdata={this.state.leukEvaluaties} />
                 </Route>
                 <Route path="/Wietske">
-                  <Diagram title="evaluation Wietske" categories={this.state.categories} moeilijkdata={this.state.moeilijkEvaluaties} leukdata={this.state.leukEvaluaties} />
+                  <Diagram title="evaluation Wietske" title={this.state.title} categories={this.state.categories} moeilijkdata={this.state.moeilijkEvaluaties} leukdata={this.state.leukEvaluaties} />
                 </Route>
                 <Route path="/Storm">
-                  <Diagram title="evaluation Storm" categories={this.state.categories} moeilijkdata={this.state.moeilijkEvaluaties} leukdata={this.state.leukEvaluaties} />
+                  <Diagram title="evaluation Storm" title={this.state.title} categories={this.state.categories} moeilijkdata={this.state.moeilijkEvaluaties} leukdata={this.state.leukEvaluaties} />
                 </Route>
               </Switch>
             </main>

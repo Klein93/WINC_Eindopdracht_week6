@@ -8,10 +8,13 @@ function DropMenu(props) {
         <MenuOption assignmentName={assignmentName} />)
 
     return (
-        <select onChange={props.getEvaluations}>
-            <option value="">--Select Assignment--</option>
-            {assignmentSelectOptions}
-        </select>
+        <div>
+            <h2>Evaluations of assignments</h2>
+            <select onChange={props.getEvaluations}>
+                <option value="">--Select Assignment--</option>
+                {assignmentSelectOptions}
+            </select>
+        </div>
     )
 }
 

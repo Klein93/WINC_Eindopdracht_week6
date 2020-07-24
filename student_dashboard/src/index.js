@@ -2,12 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import './App.css';
 import * as serviceWorker from './serviceWorker';
 //import * as V from 'victory';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
+  <React.StrictMode className="container">
+    <App className="container" />
   </React.StrictMode>,
   document.getElementById('root')
 );
