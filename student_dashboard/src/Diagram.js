@@ -7,7 +7,7 @@ import React from "react"
 function Diagram(props) {
     return (
         <div>
-            <h1>Student Dashboard Winc Academy</h1>
+            <h1>{props.title}</h1>
             <VictoryChart
                 width={800}
                 height={3000}
@@ -20,12 +20,12 @@ function Diagram(props) {
                     colorScale={["tomato", "gold"]}
                 >
                     <VictoryBar
-                        categories={{ x: allAssignmentNames }}
+                        categories={{ x: props.categories }}
                         data={props.leukdata}
 
                     />
                     <VictoryBar
-                        categories={{ x: allAssignmentNames }}
+                        categories={{ x: props.categories }}
                         data={props.moeilijkdata}
                     />
                 </VictoryGroup>

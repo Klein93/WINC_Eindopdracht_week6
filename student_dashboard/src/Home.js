@@ -6,7 +6,7 @@ import React from "react"
 function Home(props) {
     return (
         <div>
-            <Diagram leukdata={props.leukdata} moeilijkdata={props.moeilijkdata} />
+            <Diagram categories={props.categories} title={props.title} leukdata={props.leukdata} moeilijkdata={props.moeilijkdata} />
         </div>
     )
 }
