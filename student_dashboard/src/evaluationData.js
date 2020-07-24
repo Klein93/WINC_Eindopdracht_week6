@@ -3371,29 +3371,87 @@ const allAssignmentNames = ["SCRUM", "W1D1-1", "W1D2-1", "W1D2-2", "W1D2-3",
     "W4D2-4", "W4D3-1", "W4D3-2", "W4D3-3", "W4D3-4", "W4D3-5", "W4D3 - Project - Next-Level CSS",
     "W5D4-1", "W5D5 - Project - Lil_Playlist", "W6D1-1", "W6D2-1", "W6D2 - Project - Eindopdracht"]
 
+// const getTotalMoeilijkofAssignment = function (assignmentName) {
+//     const assignmentsFiltered = evaluationData.filter(item => item.opdracht === assignmentName);
+//     console.log(assignmentName)
+//     //console.log(assignmentsFiltered)
+//     const totalMoeilijkValuesofAssignment = assignmentsFiltered.reduce(function (previousValue, currentValue) {
+//         return {
+//             moeilijk: previousValue.moeilijk + currentValue.moeilijk
+//         }
+//     });
+//     const averageMoeilijkOfAssignment = totalMoeilijkValuesofAssignment.moeilijk / assignmentsFiltered.length
+//     console.log(averageMoeilijkOfAssignment)
+// }
+// allAssignmentNames.map(assignmentName => {
+//     getTotalMoeilijkofAssignment(assignmentName)
+// })
 
-
-//voor iedere opdracht totaal van leuk en moeilijk vinden
-
-const getTotalMoeilijkofAssignment = function (assignmentName) {
+const getTotalLeukofAssignment = function (assignmentName) {
     const assignmentsFiltered = evaluationData.filter(item => item.opdracht === assignmentName);
-
     console.log(assignmentName)
-
-
-    const totalMoeilijkValuesofAssignment = assignmentsFiltered.reduce(function (previousValue, currentValue) {
+    //console.log(assignmentsFiltered)
+    const totalLeukValuesofAssignment = assignmentsFiltered.reduce(function (previousValue, currentValue) {
         return {
-            moeilijk: previousValue.moeilijk + currentValue.moeilijk
+            leuk: previousValue.leuk + currentValue.leuk
         }
     });
-    console.log(totalMoeilijkValuesofAssignment)
-
+    const averageLeukOfAssignment = totalLeukValuesofAssignment.leuk / assignmentsFiltered.length
+    console.log(averageLeukOfAssignment)
 }
-
-
 allAssignmentNames.map(assignmentName => {
-    getTotalMoeilijkofAssignment(assignmentName)
+    getTotalLeukofAssignment(assignmentName)
 })
 
+
+// const getEvaluationsByStudentName = function (studentname) {
+//     const moeilijkEvaluaties = [];
+//     const leukEvaluaties = [];
+//     const objectsFilteredByName = evaluationData.filter(object => object.naam == studentname);
+//     objectsFilteredByName.forEach(item => {
+//         const newMoeilijkEvaluation = {
+//             x: item.opdracht,
+//             y: item.moeilijk
+//         }
+//         moeilijkEvaluaties.push(newMoeilijkEvaluation)
+
+//         const newLeukEvaluation = {
+//             x: item.opdracht,
+//             y: item.leuk
+//         }
+//         leukEvaluaties.push(newLeukEvaluation)
+
+//     })
+//     console.log(moeilijkEvaluaties)
+//     console.log(leukEvaluaties)
+
+// }
+
+// getEvaluationsByStudentName("Floris")
+
+// const getStudentEvaluationsByAssignmentName = function (assignmentname) {
+//     const moeilijkEvaluaties = [];
+//     const leukEvaluaties = [];
+//     const objectsFilteredByName = evaluationData.filter(object => object.opdracht == assignmentname);
+//     objectsFilteredByName.forEach(item => {
+//         const newMoeilijkEvaluation = {
+//             x: item.naam,
+//             y: item.moeilijk
+//         }
+//         moeilijkEvaluaties.push(newMoeilijkEvaluation)
+
+//         const newLeukEvaluation = {
+//             x: item.naam,
+//             y: item.leuk
+//         }
+//         leukEvaluaties.push(newLeukEvaluation)
+
+//     })
+//     console.log(moeilijkEvaluaties)
+//     console.log(leukEvaluaties)
+
+// }
+
+// getStudentEvaluationsByAssignmentName("SCRUM")
 
 export default evaluationData
