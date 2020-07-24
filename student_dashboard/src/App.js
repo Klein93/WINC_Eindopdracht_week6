@@ -148,35 +148,35 @@ class App extends React.Component {
                   <Home title="Student Dashboard Winc Academy" title={this.state.title} categories={this.state.categories} moeilijkdata={this.state.moeilijkEvaluaties} leukdata={this.state.leukEvaluaties} />
                 </Route>
                 <Route path="/Evelyn">
-                  <Diagram title="evaluation Evelyn" title={this.state.title} categories={this.state.categories} moeilijkdata={this.state.moeilijkEvaluaties} leukdata={this.state.leukEvaluaties} />
+                  <Diagram title={this.state.title} categories={this.state.categories} moeilijkdata={this.state.moeilijkEvaluaties} leukdata={this.state.leukEvaluaties} />
 
                 </Route>
                 <Route path="/Aranka">
-                  <Diagram title="evaluation Aranka" title={this.state.title} categories={this.state.categories} moeilijkdata={this.state.moeilijkEvaluaties} leukdata={this.state.leukEvaluaties} />
+                  <Diagram title={this.state.title} categories={this.state.categories} moeilijkdata={this.state.moeilijkEvaluaties} leukdata={this.state.leukEvaluaties} />
                 </Route>
                 <Route path="/Floris">
-                  <Diagram title="evaluation Floris" title={this.state.title} categories={this.state.categories} moeilijkdata={this.state.moeilijkEvaluaties} leukdata={this.state.leukEvaluaties} />
+                  <Diagram title={this.state.title} categories={this.state.categories} moeilijkdata={this.state.moeilijkEvaluaties} leukdata={this.state.leukEvaluaties} />
                 </Route>
                 <Route path="/Hector">
-                  <Diagram title="evaluation Hector" title={this.state.title} categories={this.state.categories} moeilijkdata={this.state.moeilijkEvaluaties} leukdata={this.state.leukEvaluaties} />
+                  <Diagram title={this.state.title} categories={this.state.categories} moeilijkdata={this.state.moeilijkEvaluaties} leukdata={this.state.leukEvaluaties} />
                 </Route>
                 <Route path="/Martina">
-                  <Diagram title="evaluation Martina" title={this.state.title} categories={this.state.categories} moeilijkdata={this.state.moeilijkEvaluaties} leukdata={this.state.leukEvaluaties} />
+                  <Diagram title={this.state.title} categories={this.state.categories} moeilijkdata={this.state.moeilijkEvaluaties} leukdata={this.state.leukEvaluaties} />
                 </Route>
                 <Route path="/Maurits">
-                  <Diagram title="evaluation Maurits" title={this.state.title} categories={this.state.categories} moeilijkdata={this.state.moeilijkEvaluaties} leukdata={this.state.leukEvaluaties} />
+                  <Diagram title={this.state.title} categories={this.state.categories} moeilijkdata={this.state.moeilijkEvaluaties} leukdata={this.state.leukEvaluaties} />
                 </Route>
                 <Route path="/Rahima">
-                  <Diagram title="evaluation Rahima" title={this.state.title} categories={this.state.categories} moeilijkdata={this.state.moeilijkEvaluaties} leukdata={this.state.leukEvaluaties} />
+                  <Diagram title={this.state.title} categories={this.state.categories} moeilijkdata={this.state.moeilijkEvaluaties} leukdata={this.state.leukEvaluaties} />
                 </Route>
                 <Route path="/Sandra">
-                  <Diagram title="evaluation Sandra" title={this.state.title} categories={this.state.categories} moeilijkdata={this.state.moeilijkEvaluaties} leukdata={this.state.leukEvaluaties} />
+                  <Diagram title={this.state.title} categories={this.state.categories} moeilijkdata={this.state.moeilijkEvaluaties} leukdata={this.state.leukEvaluaties} />
                 </Route>
                 <Route path="/Wietske">
-                  <Diagram title="evaluation Wietske" title={this.state.title} categories={this.state.categories} moeilijkdata={this.state.moeilijkEvaluaties} leukdata={this.state.leukEvaluaties} />
+                  <Diagram title={this.state.title} categories={this.state.categories} moeilijkdata={this.state.moeilijkEvaluaties} leukdata={this.state.leukEvaluaties} />
                 </Route>
                 <Route path="/Storm">
-                  <Diagram title="evaluation Storm" title={this.state.title} categories={this.state.categories} moeilijkdata={this.state.moeilijkEvaluaties} leukdata={this.state.leukEvaluaties} />
+                  <Diagram title={this.state.title} categories={this.state.categories} moeilijkdata={this.state.moeilijkEvaluaties} leukdata={this.state.leukEvaluaties} />
                 </Route>
               </Switch>
             </main>
