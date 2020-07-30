@@ -1,4 +1,4 @@
-import React from "react"
+
 
 const allStudentNames = ["Evelyn", "Aranka", "Floris", "Hector",
     "Martina", "Maurits", "Rahima", "Sandra", "Wietske", "Storm"]

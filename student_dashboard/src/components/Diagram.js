@@ -1,5 +1,3 @@
-import allAssignmentNames from "./allAsignmentNames"
-//import { VictoryBar } from "victory"
 import { VictoryBar, VictoryChart, VictoryTheme, VictoryGroup, VictoryZoomContainer } from "victory";
 import React from "react"
 

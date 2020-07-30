@@ -1,5 +1,5 @@
 import React from "react"
-import allAssignmentNames from "./allAsignmentNames"
+import allAssignmentNames from "./datafiles/AllAssignmentNames"
 import MenuOption from "./MenuOption"
 
 function DropMenu(props) {

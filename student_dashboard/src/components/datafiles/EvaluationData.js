@@ -3387,21 +3387,21 @@ const allAssignmentNames = ["SCRUM", "W1D1-1", "W1D2-1", "W1D2-2", "W1D2-3",
 //     getTotalMoeilijkofAssignment(assignmentName)
 // })
 
-const getTotalLeukofAssignment = function (assignmentName) {
-    const assignmentsFiltered = evaluationData.filter(item => item.opdracht === assignmentName);
-    console.log(assignmentName)
-    //console.log(assignmentsFiltered)
-    const totalLeukValuesofAssignment = assignmentsFiltered.reduce(function (previousValue, currentValue) {
-        return {
-            leuk: previousValue.leuk + currentValue.leuk
-        }
-    });
-    const averageLeukOfAssignment = totalLeukValuesofAssignment.leuk / assignmentsFiltered.length
-    console.log(averageLeukOfAssignment)
-}
-allAssignmentNames.map(assignmentName => {
-    getTotalLeukofAssignment(assignmentName)
-})
+// const getTotalLeukofAssignment = function (assignmentName) {
+//     const assignmentsFiltered = evaluationData.filter(item => item.opdracht === assignmentName);
+//     console.log(assignmentName)
+//     //console.log(assignmentsFiltered)
+//     const totalLeukValuesofAssignment = assignmentsFiltered.reduce(function (previousValue, currentValue) {
+//         return {
+//             leuk: previousValue.leuk + currentValue.leuk
+//         }
+//     });
+//     const averageLeukOfAssignment = totalLeukValuesofAssignment.leuk / assignmentsFiltered.length
+//     console.log(averageLeukOfAssignment)
+// }
+// allAssignmentNames.map(assignmentName => {
+//     getTotalLeukofAssignment(assignmentName)
+// })
 
 
 // const getEvaluationsByStudentName = function (studentname) {

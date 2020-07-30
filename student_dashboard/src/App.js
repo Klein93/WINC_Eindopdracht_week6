@@ -1,16 +1,15 @@
 import React from 'react';
 import './App.css';
-//import * as V from "victory";
-import evaluationData from "./evaluationData"
-//import { VictoryBar, VictoryChart, VictoryTheme, VictoryGroup } from "victory";
+import evaluationData from "./components/datafiles/EvaluationData"
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import allAssignmentNames from "./allAsignmentNames"
-import allStudentNames from "./allStudentNames"
-import dataLeukBar from "./dataLeukBar"
-import dataMoeilijkBar from "./dataMoelijkBar"
-import Home from "./Home"
-import Diagram from "./Diagram"
-import DropMenu from "./DropMenu"
+import allAssignmentNames from "./components/datafiles/AllAssignmentNames"
+import allStudentNames from "./components/datafiles/AllStudentNames"
+import dataLeukBar from "./components/datafiles/DataLeukBar"
+import dataMoeilijkBar from "./components/datafiles/DataMoeilijkBar"
+import Home from "./components/Home"
+import Diagram from "./components/Diagram"
+import DropMenu from "./components/DropMenu"
+
 
 class App extends React.Component {
   constructor() {
@@ -19,11 +18,15 @@ class App extends React.Component {
       leukEvaluaties: "",
       moeilijkEvaluaties: "",
       categories: "",
-      title: ""
+      title: "",
+      linksPerStudent: "",
+
     }
     this.getEvaluationsByStudentName = this.getEvaluationsByStudentName.bind(this)
     this.getAllEvaluations = this.getAllEvaluations.bind(this)
     this.getStudentEvaluationsByAssignmentName = this.getStudentEvaluationsByAssignmentName.bind(this)
+    this.getLinksPerStudent = this.getLinksPerStudent.bind(this)
+
   }
 
   getAllEvaluations() {
@@ -31,12 +34,15 @@ class App extends React.Component {
       leukEvaluaties: dataLeukBar,
       moeilijkEvaluaties: dataMoeilijkBar,
       categories: allAssignmentNames,
-      title: "Average Evaluations"
+      title: "Average Evaluations",
+
     })
   }
 
   componentDidMount() {
     this.getAllEvaluations()
+    this.getLinksPerStudent()
+
   }
 
   getEvaluationsByStudentName(studentname) {
@@ -95,6 +101,18 @@ class App extends React.Component {
 
   }
 
+  getLinksPerStudent() {
+    const linksPerStudent = allStudentNames.map(studentName => {
+      return (
+        <li>
+          <Link to={"/" + studentName} onClick={() => this.getEvaluationsByStudentName(studentName)}>{studentName}</Link>
+        </li>
+      )
+    })
+    this.setState({
+      linksPerStudent: linksPerStudent
+    })
+  }
 
   render() {
     return (
@@ -109,44 +127,15 @@ class App extends React.Component {
                 <li>
                   <Link to="/home" onClick={() => this.getAllEvaluations()}>Home</Link>
                 </li>
-                <li>
-                  <Link to="/Evelyn" onClick={() => this.getEvaluationsByStudentName("Evelyn")}>Evelyn</Link>
-                </li>
-                <li>
-                  <Link to="/Aranka" onClick={() => this.getEvaluationsByStudentName("Aranka")}>Aranka</Link>
-                </li>
-                <li>
-                  <Link to="/Floris" onClick={() => this.getEvaluationsByStudentName("Floris")}>Floris</Link>
-                </li>
-                <li>
-                  <Link to="/Hector" onClick={() => this.getEvaluationsByStudentName("Hector")}>Hector</Link>
-                </li>
-                <li>
-                  <Link to="/Martina" onClick={() => this.getEvaluationsByStudentName("Martina")}>Martina</Link>
-                </li>
-                <li>
-                  <Link to="/Maurits" onClick={() => this.getEvaluationsByStudentName("Maurits")}>Maurits</Link>
-                </li>
-                <li>
-                  <Link to="/Rahima" onClick={() => this.getEvaluationsByStudentName("Rahima")}>Rahima</Link>
-                </li>
-                <li>
-                  <Link to="/Sandra" onClick={() => this.getEvaluationsByStudentName("Sandra")}>Sandra</Link>
-                </li>
-                <li>
-                  <Link to="/Wietske" onClick={() => this.getEvaluationsByStudentName("Wietske")}>Wietske</Link>
-                </li>
-                <li>
-                  <Link to="/Storm" onClick={() => this.getEvaluationsByStudentName("Storm")}>Storm</Link>
-                </li>
-
+                {this.state.linksPerStudent}
               </ul>
             </nav>
             <main>
               <Switch>
                 <Route path="/home">
-                  <Home title="Student Dashboard Winc Academy" title={this.state.title} categories={this.state.categories} moeilijkdata={this.state.moeilijkEvaluaties} leukdata={this.state.leukEvaluaties} />
+                  <Home title={this.state.title} categories={this.state.categories} moeilijkdata={this.state.moeilijkEvaluaties} leukdata={this.state.leukEvaluaties} />
                 </Route>
+                {/* <Routes title={this.state.title} categories={this.state.categories} moeilijkdata={this.state.moeilijkEvaluaties} leukdata={this.state.leukEvaluaties} /> */}
                 <Route path="/Evelyn">
                   <Diagram title={this.state.title} categories={this.state.categories} moeilijkdata={this.state.moeilijkEvaluaties} leukdata={this.state.leukEvaluaties} />
 
